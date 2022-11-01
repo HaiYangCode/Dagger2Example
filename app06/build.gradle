@@ -5,31 +5,19 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 apply from: "../env.gradle"
+apply from: "../app.gradle"
 
 android {
     namespace 'com.example.app06'
-    compileSdk 32
+
 
     defaultConfig {
         applicationId "com.example.app06"
-        minSdk 21
-        targetSdk 32
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -46,8 +34,8 @@ dependencies {
     androidTestImplementation junit.espresso_core
 
 
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation hilt.hilt_android
+    kapt hilt.hilt_compiler
 
     implementation lib_path.retrofit//导入retrofit
     implementation lib_path.gson//Gson 库

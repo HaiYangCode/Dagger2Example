@@ -3,29 +3,13 @@ plugins {
 }
 
 apply from: "../env.gradle"
+apply from: "../app.gradle"
 android {
     namespace 'com.example.app04'
-    compileSdk 32
-
     defaultConfig {
         applicationId "com.example.app04"
-        minSdk 21
-        targetSdk 32
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -37,7 +21,6 @@ dependencies {
     testImplementation junit.junit
     androidTestImplementation junit.ext_junit
     androidTestImplementation junit.espresso_core
-
 
 
     implementation lib_path.retrofit//导入retrofit
