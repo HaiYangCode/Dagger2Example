@@ -1,7 +1,10 @@
 package com.example.app01;
 
+import javax.inject.Inject;
+
 public class User {
-    public User(){
+    @Inject
+    public User() {
 
     }
 }

@@ -13,4 +13,9 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Dagger2DemoJava"
-include ':app'
+
+include ':app01'
+include ':app02'
+
+include ':app03'
+include ':app04'
