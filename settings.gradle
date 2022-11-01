@@ -19,3 +19,4 @@ include ':app02'
 
 include ':app03'
 include ':app04'
+include ':app05'
