@@ -18,9 +18,11 @@ class MainActivity : AppCompatActivity() {
         Log.i("TAG", "apiService === $apiService")
         apiService.getUserInfo()
             .threadTransformer()
-            .subscribe {
-
-            }
+            .subscribe({
+                Log.i("TAG", "success==$it")
+            }, {
+                Log.i("TAG", "throwable==$it")
+            })
 
 
     }

@@ -5,9 +5,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 
 import dagger.hilt.components.SingletonComponent
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @InstallIn(SingletonComponent::class)
@@ -35,8 +35,8 @@ class NetModule {
     }
 
     @Provides
-    fun providerRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory {
-        return RxJava2CallAdapterFactory.create()
+    fun providerRxJava3CallAdapterFactory(): RxJava3CallAdapterFactory {
+        return RxJava3CallAdapterFactory.create()
     }
 
 
@@ -45,14 +45,14 @@ class NetModule {
         url: String,
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory,
-        rxJava2CallAdapterFactory: RxJava2CallAdapterFactory
+        rxJava3CallAdapterFactory: RxJava3CallAdapterFactory
     ): Retrofit {
 
         return Retrofit.Builder()
             .baseUrl(url)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
-            .addCallAdapterFactory(rxJava2CallAdapterFactory)
+            .addCallAdapterFactory(rxJava3CallAdapterFactory)
             .build()
     }
 

@@ -2,6 +2,7 @@ package com.example.app04.net;
 
 import dagger.Module;
 import dagger.Provides;
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -24,8 +25,9 @@ public class ApiServiceModule {
 
     @NetScope
     @Provides
-    RxJava2CallAdapterFactory providerRxjava2CallAdapterFactory() {
-        return RxJava2CallAdapterFactory.create();
+    RxJava3CallAdapterFactory providerRxjava3CallAdapterFactory() {
+
+        return RxJava3CallAdapterFactory.create();
     }
 
     /**
@@ -47,12 +49,12 @@ public class ApiServiceModule {
     Retrofit providerRetrofit(String url,
                               OkHttpClient okHttpClient,
                               GsonConverterFactory gsonConverterFactory,
-                              RxJava2CallAdapterFactory rxJava2CallAdapterFactory) {
+                              RxJava3CallAdapterFactory rxJava3CallAdapterFactory) {
         return new Retrofit.Builder()
                 .baseUrl(url)
                 .client(okHttpClient)
                 .addConverterFactory(gsonConverterFactory)
-                .addCallAdapterFactory(rxJava2CallAdapterFactory)
+                .addCallAdapterFactory(rxJava3CallAdapterFactory)
                 .build();
     }
 
